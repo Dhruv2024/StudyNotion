@@ -19,7 +19,7 @@ export const ForgotPassword = () => {
         <div className='text-white flex justify-center items-center lg:h-[70vh] '>
             {
                 loading ? (
-                    <div>Loading...</div>
+                    <div className='spinner'></div>
                 ) : (
                     <div className='lg:w-[25vw]'>
                         <h1 className='text-3xl font-semibold mb-4'>

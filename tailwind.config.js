@@ -8,6 +8,7 @@ module.exports = {
       mono: ["Roboto Mono", "monospace"],
     },
     colors: {
+      orange: "#FFA500",
       red: "#FF0000",
       white: "#fff",
       black: "#000",

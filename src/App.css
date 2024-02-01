@@ -11,3 +11,52 @@ body {
 .homepage_bg {
     background: url("../src/assets/Images/bghome.svg");
 }
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    perspective: 500px;
+}
+
+.spinner:before,
+.spinner:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+    height: 48px;
+    background: #FF3D00;
+    border-radius: 0 24px 24px 0;
+    transform-origin: 0 0;
+    animation: flip 2s linear infinite alternate;
+}
+
+.spinner:after {
+    left: 0;
+    border-radius: 24px 0 0 24px;
+    transform-origin: 100% 0;
+    animation-delay: 1s;
+}
+
+@keyframes flip {
+
+    0%,
+    10% {
+        transform: rotateY(0deg)
+    }
+
+    90%,
+    100% {
+        transform: rotateY(-180deg)
+    }
+}
+
+.lable-style {
+    @apply text-[14px] text-richblack-5;
+}
+
+.form-style {
+    @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-400 focus:outline-none;
+}

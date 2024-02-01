@@ -33,8 +33,7 @@ export const VerifyEmail = () => {
         <div className='flex justify-center items-center flex-col h-[80vh] text-white'>
             {
                 loading ? (
-                    <div>
-                        Loading...
+                    <div className='spinner'>
                     </div>
                 ) : (
                     <div className='lg:w-[25vw]'>
@@ -50,7 +49,11 @@ export const VerifyEmail = () => {
                                 containerStyle={'bg-red flex justify-between w-[100%] h-[48px]'}
                                 inputStyle={'w-[37px] h-[100%] text-black'}
                             />
-                            <button type='submit' className='w-[100%] bg-yellow-50 mt-7 rounded-md text-black text-center py-3 text-[16px] font-bold'>
+                            <button type='submit'
+                                style={{
+                                    boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                                }}
+                                className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50">
                                 Verify email
                             </button>
                         </form>

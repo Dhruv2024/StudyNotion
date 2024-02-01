@@ -4,7 +4,7 @@ import Logo from '../../assets/Logo/Logo-Full-Light.png'
 import { NavbarLinks } from '../../data/navbar-links'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { FaCartShopping } from "react-icons/fa6";
+import { IoCart } from "react-icons/io5";
 import { apiConnector } from '../../services/apiConnector'
 import { categories } from '../../services/apis'
 import { IoIosArrowDropdownCircle } from "react-icons/io";
@@ -111,7 +111,7 @@ export const Navbar = () => {
                     {
                         user && user.accountType !== "Instructor" && (
                             <Link to="/dashboard/cart" className='relative'>
-                                <FaCartShopping className='text-2xl text-white' />
+                                <IoCart className='text-2xl text-white' />
                                 {
                                     totalItems > 0 &&
                                     <span className='absolute -top-1 -right-2 bg-green-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white'>

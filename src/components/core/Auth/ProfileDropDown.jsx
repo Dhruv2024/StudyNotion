@@ -9,6 +9,7 @@ import useOnClickOutside from "../../../hook/useOnClickOutside"
 
 export default function ProfileDropdown() {
     const { user } = useSelector((state) => state.profile)
+    // console.log(user.image)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
@@ -16,7 +17,10 @@ export default function ProfileDropdown() {
 
     useOnClickOutside(ref, () => setOpen(false))
 
-    if (!user) return null
+    if (!user) {
+        // console.log("entered");
+        return null
+    }
 
     return (
         <button className="relative" onClick={() => setOpen(true)}>

@@ -37,7 +37,7 @@ export const CourseCard = ({ cardData, currentCard, setCurrentCard }) => {
                 {/* Flow Chart */}
                 <div className="flex items-center gap-2 text-[16px]">
                     <ImTree />
-                    <p>{cardData?.lessionNumber} Lession</p>
+                    <p>{cardData?.lessonNumber} Lessons</p>
                 </div>
             </div>
         </div>

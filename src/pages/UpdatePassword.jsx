@@ -36,8 +36,7 @@ export const UpdatePassword = () => {
         <div className='flex justify-center items-center flex-col h-[80vh] text-white'>
             {
                 loading ? (
-                    <div>
-                        Loading...
+                    <div className='spinner'>
                     </div>
                 ) : (
                     <div className='lg:w-[25vw]'>
