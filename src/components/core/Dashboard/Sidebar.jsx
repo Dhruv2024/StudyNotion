@@ -66,7 +66,7 @@ export const Sidebar = () => {
                     </button>
                 </div>
             </div>
-            {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
+            {confirmationModal && <ConfirmationModal modalData={confirmationModal} className="z-10" />}
         </div>
     )
 }

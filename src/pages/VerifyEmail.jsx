@@ -45,9 +45,14 @@ export const VerifyEmail = () => {
                                 onChange={setOtp}
                                 numInputs={6}
                                 // renderSeparator={<span>-</span>}
-                                renderInput={(props) => <input {...props} placeholder='-' />}
-                                containerStyle={'bg-red flex justify-between w-[100%] h-[48px]'}
-                                inputStyle={'w-[37px] h-[100%] text-black'}
+                                renderInput={(props) => <
+                                    input {...props}
+                                    placeholder='-'
+                                    style={{
+                                        boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                                    }}
+                                    className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
+                                />}
                             />
                             <button type='submit'
                                 style={{
