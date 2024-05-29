@@ -30,22 +30,22 @@ export const ExploreMore = () => {
     return (
         <div>
 
-            <div className='text-4xl font-semibold text-center'>
+            <div className='lg:text-4xl font-semibold text-center text-2xl'>
                 Unlock the
-                <HighlightText text={"Power of Code"} />
+                <HighlightText text={" Power of Code"} />
             </div>
 
             <p className='text-center text-richblack-300 text-sm text-[16px] mt-3'>
                 Learn to build anything you can imagine
             </p>
 
-            <div className='mt-5 flex flex-row rounded-full bg-richblack-800 mb-5 border-richblack-100
-      px-1 py-1'>
+            <div className='mt-5 flex lg:flex-row flex-col rounded-full bg-richblack-800 mb-5 border-richblack-100
+      px-1 py-1 items-center'>
                 {
                     tabsName.map((element, index) => {
                         return (
                             <div
-                                className={`text-[16px] flex flex-row items-center gap-2 
+                                className={`lg:text-[16px] flex flex-row items-center gap-2 text-[12px]
                 ${currentTab === element
                                         ? "bg-richblack-900 text-richblack-5 font-medium"
                                         : "text-richblack-200"} rounded-full transition-all duration-200 cursor-pointer

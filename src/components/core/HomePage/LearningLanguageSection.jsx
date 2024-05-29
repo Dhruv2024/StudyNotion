@@ -6,7 +6,7 @@ import plan_your_lessons from '../../../assets/Images/Plan_your_lessons.png'
 import { HomeButton } from './HomeButton'
 export const LearningLanguageSection = () => {
     return (
-        <div className='mt-[120px] mb-32'>
+        <div className='lg:mt-[120px] mt-[40px] mb-32'>
             <div className='flex flex-col gap-5 items-center'>
 
                 <div className='text text-4xl font-semibold text-center'>
@@ -17,21 +17,21 @@ export const LearningLanguageSection = () => {
                     Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.
                 </div>
 
-                <div className='flex items-center justify-center mt-5'>
+                <div className='flex lg:flex-row flex-col items-center justify-center mt-5'>
                     <img
                         src={know_your_progress}
                         alt="KnowYourProgress"
-                        className='object-contain -mr-32'
+                        className='object-contain lg:-mr-32 '
                     />
                     <img
                         src={compare_with_others}
                         alt="CompareWithOthers"
-                        className='object-contain'
+                        className='object-contain lg:-mt-0 -mt-10'
                     />
                     <img
                         src={plan_your_lessons}
                         alt="PlanYourLessons"
-                        className='object-contain -ml-36'
+                        className='object-contain lg:-ml-36 lg:-mt-0 -mt-16'
                     />
                 </div>
 

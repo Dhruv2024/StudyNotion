@@ -34,7 +34,7 @@ export const Home = () => {
                     With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on-projects, quizzes, and personalized feedback from instructors.
                 </div>
 
-                <div className="flex gap-7 mt-8">
+                <div className="flex gap-7 mt-8 lg:flex-row flex-col">
                     <HomeButton active={true} linkTo={"/signup"}>
                         Learn More
                     </HomeButton>
@@ -43,7 +43,7 @@ export const Home = () => {
                     </HomeButton>
                 </div>
 
-                <div className="mx- my-14 shadow-blue-200">
+                <div className="mx-3 my-7 shadow-[10px_-5px_50px_-5px] shadow-blue-200">
                     <video
                         muted
                         loop
@@ -117,9 +117,9 @@ export const Home = () => {
 
             {/* Section 2 */}
             <div className="bg-pure-greys-5 text-richblack-700">
-                <div className="homepage_bg h-[333px]">
+                <div className="homepage_bg lg:h-[333px] h-[170px]">
                     <div className="w-11/12 max-w-maxContent flex flex-col items-center gap-5 mx-auto justify-between">
-                        <div className="h-[150px]">
+                        <div className="lg:h-[150px] h-[40px]">
 
                         </div>
                         <div className="flex flex-row gap-7">
@@ -139,12 +139,12 @@ export const Home = () => {
                 </div>
 
                 <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-7">
-                    <div className="flex flex-row gap-5 mt-[95px] mb-10">
-                        <div className="font-inter text-4xl font-semibold w-[48%]">
+                    <div className="flex lg:flex-row flex-col gap-5 mt-[95px] mb-10">
+                        <div className="font-inter text-4xl font-semibold lg:w-[48%] w-[100%] text-center lg:mr-5">
                             Get the skills you need for a <HighlightText text={"job that is in demand."} />
                         </div>
-                        <div className="flex flex-col gap-10 w-[45%] items-start">
-                            <div className="text-[16px]">
+                        <div className="flex flex-col lg:gap-10 gap-7 lg:w-[45%] w-[100%] items-start">
+                            <div className="lg:text-[16px] text-[15px]">
                                 The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                             </div>
                             <HomeButton active={true} linkTo={"/signup"}>

@@ -7,9 +7,9 @@ export const CodeBlocks = ({
     position, heading, subheading, button1, button2, codeblock, backgroundGradient, codeColor
 }) => {
     return (
-        <div className={`flex ${position} my-20 justify-between gap-10`}>
+        <div className={`flex ${position} my-20 justify-between gap-10 flex-col`}>
             {/* Section 1 */}
-            <div className='w-[50%] flex flex-col gap-8 text-white'>
+            <div className='lg:w-[50%] w-[100%] flex flex-col gap-8 text-white'>
                 {heading}
                 <div className='text-richblack-300 font-bold'>
                     {subheading}
