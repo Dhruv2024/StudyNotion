@@ -53,11 +53,13 @@ export const Navbar = () => {
         <div className='flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700'>
             <div className='flex w-11/12 max-w-maxContent items-center justify-between'>
                 <Link to="/">
-                    <img src={Logo} width={160} height={32} loading='lazy' />
+                    <img src={Logo} width={160} height={32} loading='lazy' className='lg:inline-block hidden' />
+                    <img src={Logo} loading='lazy' className='w-[60%] lg:hidden' />
                 </Link>
 
                 <nav>
-                    <ul className='flex gap-x-6 text-richblack-25'>
+                    {/* for large screen */}
+                    <ul className='lg:flex gap-x-6 text-richblack-25 hidden'>
                         {
                             NavbarLinks.map((link, index) => {
                                 return <li key={index}>
@@ -113,7 +115,7 @@ export const Navbar = () => {
                 </nav>
 
                 {/* Login/Signup/Dashboard */}
-                <div className='flex gap-x-4'>
+                <div className='flex gap-x-4 items-center'>
                     {
                         user && user.accountType !== "Instructor" && (
                             <Link to="/dashboard/cart" className='relative'>
@@ -130,17 +132,17 @@ export const Navbar = () => {
                     {
                         token === null && (
                             <Link to="/login">
-                                <button className='border border-richblack-700 bg-richblack-800 px-[12px] py-[12px] text-richblack-100 rounded-md'>
-                                    Log in
+                                <button className='border border-richblack-700 bg-richblack-800 lg:px-[12px] lg:py-[12px] text-richblack-100 rounded-md px-[2px] text-sm'>
+                                    Login
                                 </button>
                             </Link>
                         )
                     }
                     {
                         token === null && (
-                            <Link to="/signup" className='border border-richblack-700 bg-richblack-800 px-[12px] py-[12px] text-richblack-100 rounded-md'>
+                            <Link to="/signup" className='border border-richblack-700 bg-richblack-800 lg:px-[12px] lg:py-[12px] text-richblack-100 rounded-md text-sm'>
                                 <button>
-                                    Sign Up
+                                    SignUp
                                 </button>
                             </Link>
                         )
