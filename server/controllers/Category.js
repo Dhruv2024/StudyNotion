@@ -78,7 +78,7 @@ exports.categoryPageDetails = async (req, res) => {
 
         // Get courses for other categories
         const categoriesExceptSelected = await Category.find({
-            _id: { $ne: categoryId },
+            _id: categoryId,
         })
         let differentCategory = await Category.findOne(
             categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]

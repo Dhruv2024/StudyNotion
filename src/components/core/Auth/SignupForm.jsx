@@ -40,7 +40,9 @@ function SignupForm() {
     // Handle Form Submission
     const handleOnSubmit = (e) => {
         e.preventDefault()
-
+        if (password < 8) {
+            toast.error("Password should have minimum length of 8")
+        }
         if (password !== confirmPassword) {
             toast.error("Passwords Do Not Match")
             return

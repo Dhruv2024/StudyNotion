@@ -55,7 +55,6 @@ exports.deleteAccount = async (req, res) => {
 		}
 		// Delete Assosiated Profile with the User
 		await Profile.findByIdAndDelete({ _id: user.additionalDetails });
-		// TODO: Unenroll User From All the Enrolled Courses
 		// Now Delete User
 		await User.findByIdAndDelete({ _id: id });
 		res.status(200).json({
@@ -100,7 +99,6 @@ exports.updateDisplayPicture = async (req, res) => {
 			1000,
 			1000
 		)
-		console.log(image)
 		const updatedProfile = await User.findByIdAndUpdate(
 			{ _id: userId },
 			{ image: image.secure_url },

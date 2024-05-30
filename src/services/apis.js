@@ -51,6 +51,7 @@ export const ratingsEndpoints = {
 
 // CATAGORIES API
 export const categories = {
+    CREATE_CATEGORY_API: BASE_URL + "/course/createCategory",
     CATEGORIES_API: BASE_URL + "/course/showAllCategories",
 }
 
