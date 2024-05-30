@@ -49,7 +49,7 @@ export const EnrolledCourses = () => {
                             key={i}
                         >
                             <div
-                                className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
+                                className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3 lg:flex-row flex-col"
                                 onClick={() => {
                                     // console.log("PRINTING LINK.........");
                                     // console.log(`/view-course/${course?._id}/section/${course.courseContent?.[0]}/sub-section/${course.courseContent?.[0]?.subSection?.[0]?._id}`)

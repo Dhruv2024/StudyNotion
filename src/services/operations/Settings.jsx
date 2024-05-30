@@ -4,6 +4,8 @@ import { setUser } from "../../slices/profileSlice"
 import { settingsEndpoints } from "../apis"
 import { logout } from "./authAPI"
 import { apiConnector } from "../apiConnector"
+import { getUserDetails } from "./profileAPI"
+import { useNavigate } from "react-router-dom"
 
 const {
     UPDATE_DISPLAY_PICTURE_API,
@@ -49,7 +51,7 @@ export function updateDisplayPicture(token, formData) {
     }
 }
 
-export function updateProfile(token, formData) {
+export function updateProfile(token, formData, navigate) {
     return async (dispatch) => {
         const toastId = toast.loading("Loading...")
         try {
@@ -67,7 +69,9 @@ export function updateProfile(token, formData) {
             // dispatch(
             //     setUser({ ...response.data.updatedUserDetails, image: userImage })
             // )
+            const user = await dispatch(getUserDetails(token, navigate));
             toast.success("Profile Updated Successfully")
+            navigate("/dashboard/my-profile");
         } catch (error) {
             console.log("UPDATE_PROFILE_API API ERROR............", error)
             toast.error("Could Not Update Profile")
