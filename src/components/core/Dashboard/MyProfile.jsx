@@ -8,9 +8,6 @@ import { formattedDate } from '../../../utils/dateFormatter';
 export const MyProfile = () => {
     const { user } = useSelector((state) => state.profile);
     const navigate = useNavigate();
-
-    console.log("PRINTING USER DETAILS....")
-    console.log(user);
     return (
         <div>
             <h1 className='mb-14 text-3xl font-medium text-richblack-5'>
