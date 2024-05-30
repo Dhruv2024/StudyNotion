@@ -26,7 +26,7 @@ const VideoDetails = () => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        ; (async () => {
+        async function getVideoDetails() {
             if (!courseSectionData.length) return
             if (!courseId && !sectionId && !subSectionId) {
                 navigate(`/dashboard/enrolled-courses`)
@@ -44,7 +44,8 @@ const VideoDetails = () => {
                 setPreviewSource(courseEntireData.thumbnail)
                 setVideoEnded(false)
             }
-        })()
+        }
+        getVideoDetails();
     }, [courseSectionData, courseEntireData, location.pathname])
 
     // check if the lecture is the first video of the course

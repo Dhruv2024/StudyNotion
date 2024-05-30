@@ -19,7 +19,7 @@ export default function ViewCourse() {
     const [reviewModal, setReviewModal] = useState(false)
 
     useEffect(() => {
-        ; (async () => {
+        async function getDetails() {
             const courseData = await getFullDetailsOfCourse(courseId, token)
             // console.log("Course Data here... ", courseData.courseDetails)
             dispatch(setCourseSectionData(courseData.courseDetails.courseContent))
@@ -30,15 +30,15 @@ export default function ViewCourse() {
                 lectures += sec.subSection.length
             })
             dispatch(setTotalNoOfLectures(lectures))
-        })()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }
+        getDetails();
     }, [])
 
     return (
         <>
-            <div className="relative flex min-h-[calc(100vh-3.5rem)]">
+            <div className="relative flex lg:min-h-[calc(100vh-3.5rem)] lg:flex-row flex-col">
                 <VideoDetailsSidebar setReviewModal={setReviewModal} />
-                <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
+                <div className="lg:h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
                     <div className="mx-6">
                         <Outlet />
                     </div>

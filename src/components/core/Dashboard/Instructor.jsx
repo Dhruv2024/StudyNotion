@@ -18,7 +18,7 @@ export default function Instructor() {
             setLoading(true)
             const instructorApiData = await getInstructorData(token)
             const result = await fetchInstructorCourses(token)
-            console.log(instructorApiData)
+            // console.log(instructorApiData)
             if (instructorApiData.length) setInstructorData(instructorApiData)
             if (result) {
                 setCourses(result)
@@ -37,8 +37,6 @@ export default function Instructor() {
         (acc, curr) => acc + curr.totalStudentsEnrolled,
         0
     )
-    console.log("Courses are : ")
-    console.log(courses);
     return (
         <div>
             <div className="space-y-2">
@@ -53,7 +51,7 @@ export default function Instructor() {
                 <div className="spinner"></div>
             ) : courses.length > 0 ? (
                 <div>
-                    <div className="my-4 flex h-[450px] space-x-4">
+                    <div className="my-4 flex lg:h-[450px] space-x-4 lg:flex-row flex-col">
                         {/* Render chart / graph */}
                         {totalAmount > 0 || totalStudents > 0 ? (
                             <InstructorChart courses={instructorData} />
@@ -99,8 +97,8 @@ export default function Instructor() {
                             </Link>
                         </div>
                         <div className="my-4 flex items-start space-x-6">
-                            {courses.slice(0, 3).map((course) => (
-                                <div key={course._id} className="w-1/3">
+                            {courses.slice(0, 2).map((course) => (
+                                <div key={course._id} className="lg:w-1/3 w-1/2">
                                     <img
                                         src={course.thumbnail}
                                         alt={course.courseName}

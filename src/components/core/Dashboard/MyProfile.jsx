@@ -145,13 +145,13 @@ export const MyProfile = () => {
                     </div>
                     <div>
                         <p className="mb-2 text-sm text-richblack-300">Gender</p>
-                        <p className="text-sm font-medium text-richblack-5">
+                        <div className="text-sm font-medium text-richblack-5">
                             {user?.additionalDetails?.gender ?? (
                                 <div className='text-richblack-400'>
                                     Add Gender
                                 </div>
                             )}
-                        </p>
+                        </div>
                     </div>
                     <div>
                         <p className="mb-2 text-sm text-richblack-300">Last Name</p>
