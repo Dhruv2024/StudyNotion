@@ -15,7 +15,7 @@ export const Dashboard = () => {
     }
 
     return (
-        <div className='relative flex min-h-[calc(100vh-3.5rem)]'>
+        <div className='relative flex min-h-[calc(100vh-3.5rem)] lg:flex-row flex-col'>
             <Sidebar />
             <div className='h-[calc(100vh-3.5rem)] flex-1 overflow-auto'>
                 <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
