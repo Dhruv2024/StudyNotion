@@ -173,14 +173,13 @@ const VideoDetails = () => {
         }
         setLoading(false)
     }
-    console.log(videoResource);
+    // console.log(videoResource);
     // const videoResource = JSON.stringify(videoData?.resource)
     // console.log(videoResource);
     let temp = JSON.stringify(videoResource)
-    console.log(JSON.stringify(videoResource))
     temp = temp.slice(1, -1).replace(/\\r\\n/g, '\r\n');
     const videoResourceItems = temp.split(/\r?\n/);
-    console.log(videoResourceItems)
+    // console.log(videoResourceItems)
     return (
         <div className="flex flex-col gap-5 text-white">
             {!videoData ? (
