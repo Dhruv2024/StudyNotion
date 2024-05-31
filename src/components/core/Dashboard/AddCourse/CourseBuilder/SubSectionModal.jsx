@@ -43,6 +43,7 @@ export default function SubSectionModal({
             setValue("lectureTitle", modalData.title)
             setValue("lectureDesc", modalData.description)
             setValue("lectureVideo", modalData.videoUrl)
+            setValue("lectureResource", modalData.resource)
         }
     }, [])
 
@@ -53,7 +54,8 @@ export default function SubSectionModal({
         if (
             currentValues.lectureTitle !== modalData.title ||
             currentValues.lectureDesc !== modalData.description ||
-            currentValues.lectureVideo !== modalData.videoUrl
+            currentValues.lectureVideo !== modalData.videoUrl ||
+            currentValues.lectureResource !== modalData.resource
         ) {
             return true
         }
@@ -76,6 +78,9 @@ export default function SubSectionModal({
         }
         if (currentValues.lectureVideo !== modalData.videoUrl) {
             formData.append("video", currentValues.lectureVideo)
+        }
+        if (currentValues.lectureResource !== modalData.resource) {
+            formData.append("resource", currentValues.lectureResource)
         }
         setLoading(true)
         const result = await updateSubSection(formData, token)
@@ -110,6 +115,7 @@ export default function SubSectionModal({
         formData.append("title", data.lectureTitle)
         formData.append("description", data.lectureDesc)
         formData.append("video", data.lectureVideo)
+        formData.append("resource", data.lectureResource)
         setLoading(true)
         const result = await createSubSection(formData, token)
         if (result) {
@@ -188,6 +194,19 @@ export default function SubSectionModal({
                                 Lecture Description is required
                             </span>
                         )}
+                    </div>
+                    {/* Lecture resource */}
+                    <div className="flex flex-col space-y-2">
+                        <label className="text-sm text-richblack-5" htmlFor="lectureDesc">
+                            Lecture Resource{" "}
+                        </label>
+                        <textarea
+                            disabled={view || loading}
+                            id="lectureResource"
+                            placeholder="Enter Lecture Resource"
+                            {...register("lectureResource")}
+                            className="form-style resize-x-none min-h-[130px] w-full"
+                        />
                     </div>
                     {!view && (
                         <div className="flex justify-end">

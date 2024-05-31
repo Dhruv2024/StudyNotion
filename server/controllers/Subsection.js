@@ -8,6 +8,7 @@ exports.createSubSection = async (req, res) => {
   try {
     // Extract necessary information from the request body
     const { sectionId, title, description } = req.body
+    let { resource } = req.body;
     const video = req.files.video
 
     // Check if all necessary fields are provided
@@ -24,12 +25,16 @@ exports.createSubSection = async (req, res) => {
       process.env.FOLDER_NAME
     )
     console.log(uploadDetails)
+    if (!resource) {
+      resource = "";
+    }
     // Create a new sub-section with the necessary information
     const SubSectionDetails = await SubSection.create({
       title: title,
       timeDuration: `${uploadDetails.duration}`,
       description: description,
       videoUrl: uploadDetails.secure_url,
+      resource: resource
     })
 
     // Update the corresponding section with the newly created sub-section
@@ -54,7 +59,7 @@ exports.createSubSection = async (req, res) => {
 
 exports.updateSubSection = async (req, res) => {
   try {
-    const { sectionId, subSectionId, title, description } = req.body
+    const { sectionId, subSectionId, title, description, resource } = req.body
     const subSection = await SubSection.findById(subSectionId)
 
     if (!subSection) {
@@ -77,15 +82,14 @@ exports.updateSubSection = async (req, res) => {
         video,
         process.env.FOLDER_NAME
       )
-      subSection.videoUrl = uploadDetails.secure_url
+      subSection.videoUrl = uploadDetails.secure_url;
       subSection.timeDuration = `${uploadDetails.duration}`
     }
-
+    if (resource !== undefined) {
+      subSection.resource = resource;
+    }
     await subSection.save()
-
-    const updatedSection = await Section.findById(sectionId).populate("subSection")
-
-
+    const updatedSection = await Section.findById(sectionId).populate("subSection");
     return res.json({
       success: true,
       data: updatedSection,

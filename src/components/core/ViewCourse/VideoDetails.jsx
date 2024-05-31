@@ -9,6 +9,7 @@ import { BigPlayButton, Player } from "video-react"
 import { markLectureAsComplete } from "../../../services/operations/courseDetailsAPI"
 import { updateCompletedLectures } from "../../../slices/viewCourseSlice"
 import { IconBtn } from "../../common/IconBtn"
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 
 const VideoDetails = () => {
     const { courseId, sectionId, subSectionId } = useParams()
@@ -24,6 +25,8 @@ const VideoDetails = () => {
     const [previewSource, setPreviewSource] = useState("")
     const [videoEnded, setVideoEnded] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [videoResource, setVideoResource] = useState("");
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         async function getVideoDetails() {
@@ -43,6 +46,7 @@ const VideoDetails = () => {
                 setVideoData(filteredVideoData[0])
                 setPreviewSource(courseEntireData.thumbnail)
                 setVideoEnded(false)
+                setVideoResource(filteredVideoData[0]?.resource)
             }
         }
         getVideoDetails();
@@ -169,7 +173,14 @@ const VideoDetails = () => {
         }
         setLoading(false)
     }
-
+    console.log(videoResource);
+    // const videoResource = JSON.stringify(videoData?.resource)
+    // console.log(videoResource);
+    let temp = JSON.stringify(videoResource)
+    console.log(JSON.stringify(videoResource))
+    temp = temp.slice(1, -1).replace(/\\r\\n/g, '\r\n');
+    const videoResourceItems = temp.split(/\r?\n/);
+    console.log(videoResourceItems)
     return (
         <div className="flex flex-col gap-5 text-white">
             {!videoData ? (
@@ -243,7 +254,37 @@ const VideoDetails = () => {
             )}
 
             <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
-            <p className="pt-2 pb-6">{videoData?.description}</p>
+            <p className="pt-1 pb-3 font-inter">{videoData?.description}</p>
+            {
+                (videoResourceItems.length > 1 || (videoResourceItems.length === 1 && videoResourceItems[0] !== "")) && (
+                    <div className="flex flex-col pb-10">
+                        <div className="flex items-center gap-1 font-semibold text-red text-2xl mb-2 cursor-pointer" onClick={() => {
+                            setOpen(!open);
+                        }}>
+                            {
+                                open ? (
+                                    <IoIosArrowDown />
+                                ) : (
+                                    <IoIosArrowForward />
+                                )
+                            }
+                            <h1>Video Resources</h1>
+                        </div>
+                        {
+                            open &&
+                            <ul className="list-disc">
+                                {
+                                    videoResourceItems.map((ele, index) => (
+                                        <li key={index} className="ml-10 font-normal">
+                                            {ele}
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        }
+                    </div>
+                )
+            }
         </div>
     )
 }
