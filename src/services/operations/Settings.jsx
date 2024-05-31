@@ -5,7 +5,6 @@ import { settingsEndpoints } from "../apis"
 import { logout } from "./authAPI"
 import { apiConnector } from "../apiConnector"
 import { getUserDetails } from "./profileAPI"
-import { useNavigate } from "react-router-dom"
 
 const {
     UPDATE_DISPLAY_PICTURE_API,

@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buyCourse } from '../services/operations/studentFeaturesAPI';
 import { fetchCourseDetails } from '../services/operations/courseDetailsAPI';
-import { setCourse } from '../slices/courseSlice';
 import GetAvgRating from '../utils/avgRating';
 import RatingStars from "../components/common/RatingStars"
 import CourseAccordionBar from "../components/core/Course/CourseAccordionBar"
@@ -62,7 +61,7 @@ const CourseDetails = () => {
         setIsActive(
             !isActive.includes(id)
                 ? isActive.concat([id])
-                : isActive.filter((e) => e != id)
+                : isActive.filter((e) => e !== id)
         )
     }
 
