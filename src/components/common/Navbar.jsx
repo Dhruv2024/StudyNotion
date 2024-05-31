@@ -40,7 +40,7 @@ export const Navbar = () => {
         }
         catch (err) {
             console.log("Not fetched the catalog list")
-            console.log(err.message);
+            console.log(err);
         }
     }
     useEffect(() => {
