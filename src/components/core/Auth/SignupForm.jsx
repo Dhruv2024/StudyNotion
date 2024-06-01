@@ -42,6 +42,7 @@ function SignupForm() {
         e.preventDefault()
         if (password.length < 8) {
             toast.error("Password should have minimum length of 8")
+            return;
         }
         if (password !== confirmPassword) {
             toast.error("Passwords Do Not Match")
