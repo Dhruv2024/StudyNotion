@@ -36,7 +36,7 @@ export const VerifyEmail = () => {
                     <div className='spinner'>
                     </div>
                 ) : (
-                    <div className='lg:w-[25vw]'>
+                    <div className='lg:w-[25vw] w-[90vw]'>
                         <h1 className='text-3xl font-semibold mb-4'>Verify email</h1>
                         <p className='text-richblack-200 mb-8'>A verification code has been sent to you. Enter the code below</p>
                         <form onSubmit={handleOnSubmit}>
@@ -51,14 +51,14 @@ export const VerifyEmail = () => {
                                     style={{
                                         boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                                     }}
-                                    className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
+                                    className="w-[40px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
                                 />}
                             />
                             <button type='submit'
                                 style={{
                                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                                 }}
-                                className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50">
+                                className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 mt-4">
                                 Verify email
                             </button>
                         </form>
@@ -83,6 +83,6 @@ export const VerifyEmail = () => {
                     </div>
                 )
             }
-        </div>
+        </div >
     )
 }
