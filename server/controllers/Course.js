@@ -373,12 +373,36 @@ exports.getInstructorCourses = async (req, res) => {
 		// Find all courses belonging to the instructor
 		const instructorCourses = await Course.find({
 			instructor: instructorId,
-		}).sort({ createdAt: -1 })
+		})
+			.populate({
+				path: "courseContent",
+				populate: {
+					path: "subSection"
+				}
+			}).
+			sort({ createdAt: -1 })
+		const instructorCoursesWithDuration = instructorCourses.map((courseDetails) => {
+			let totalDurationInSeconds = 0
+			courseDetails.courseContent.forEach((content) => {
+				content.subSection.forEach((subSection) => {
+					const timeDurationInSeconds = parseInt(subSection.timeDuration)
+					totalDurationInSeconds += timeDurationInSeconds
+				})
+			})
 
+			const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
+			return {
+				...courseDetails.toObject(),
+				totalDuration
+			};
+		})
+
+		console.log("PRINTING INSTRUCTOR COURSES WITH DURATION");
+		console.log(instructorCoursesWithDuration);
 		// Return the instructor's courses
 		res.status(200).json({
 			success: true,
-			data: instructorCourses,
+			data: instructorCoursesWithDuration,
 		})
 	} catch (error) {
 		console.error(error)
