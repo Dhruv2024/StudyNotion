@@ -13,6 +13,7 @@ import { formatDate } from '../services/formatDate';
 import Footer from "../components/common/Footer"
 import CourseDetailsCard from '../components/core/Course/CourseDetailsCard';
 import { Error } from './Error';
+import { ConfirmationModal } from '../components/common/ConfirmationModal';
 
 const CourseDetails = () => {
 
@@ -260,7 +261,7 @@ const CourseDetails = () => {
                 </div>
             </div>
             <Footer />
-            {confirmationModal && <confirmationModal modalData={confirmationModal} />}
+            {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
         </>
     )
 }
