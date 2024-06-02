@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux'
 import { IoCart } from "react-icons/io5";
 import { apiConnector } from '../../services/apiConnector'
 import { categories } from '../../services/apis'
-import { IoIosArrowDropdownCircle } from "react-icons/io";
 import ProfileDropdown from '../core/Auth/ProfileDropDown'
+import { IoIosArrowDown } from "react-icons/io";
 
 
 // const subLinks = [
@@ -27,16 +27,18 @@ export const Navbar = () => {
     const { user } = useSelector((state) => state.profile);
     const { totalItems } = useSelector((state) => state.cart);
     const location = useLocation();
-
+    const [loading, setLoading] = useState(false);
 
     const [subLinks, setSubLinks] = useState([]);
 
     async function fetchSublinks() {
         // console.log(subLinks)
         try {
+            setLoading(true);
             const result = await apiConnector("GET", categories.CATEGORIES_API);
             // console.log("Printing Sublinks result ", result);
             setSubLinks(result.data.data);
+            setLoading(false);
         }
         catch (err) {
             console.log("Not fetched the catalog list")
@@ -68,8 +70,7 @@ export const Navbar = () => {
                                         link.title === "Catalog" ? (
                                             <div className='relative flex items-center gap-2 group'>
                                                 <p>{link.title}</p>
-                                                <IoIosArrowDropdownCircle />
-
+                                                <IoIosArrowDown />
                                                 <div className='z-0 invisible absolute 
                                                 left-[50%] translate-x-[-50%] translate-y-[20%] 
                                                 top-[50%] flex flex-col rounded-md bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-300 
@@ -80,30 +81,37 @@ export const Navbar = () => {
                                                     h-6 w-6 rotate-45 rounded bg-richblack-5'>
                                                     </div>
                                                     {
-                                                        subLinks.length === 0 && (
-                                                            <div className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50">
-                                                                No categories Available
-                                                            </div>
-                                                        )
-                                                    }
-                                                    {
-                                                        subLinks.length > 0 ? (
-                                                            subLinks.map((subLink, index) => (
-                                                                <Link
-                                                                    to={`/catalog/${subLink.name
-                                                                        .split(" ")
-                                                                        .join("-")
-                                                                        .toLowerCase()}`}
-                                                                    className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
-                                                                    key={index}>
-                                                                    <p>
-                                                                        {subLink.name}
-                                                                    </p>
-                                                                </Link>
-                                                            ))
+                                                        loading ? (
+                                                            <div className="bg-transparent py-4 loader mx-auto"></div>
+                                                            // <div className='text-black flex items-center'>
+                                                            //  <span>Loading</span> 
+                                                            // </div>
                                                         ) :
-                                                            (<div></div>)
+                                                            (
+
+                                                                subLinks.length === 0 ? (
+                                                                    <div className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50">
+                                                                        No categories Available
+                                                                    </div>
+                                                                ) : (
+                                                                    subLinks.map((subLink, index) => (
+                                                                        <Link
+                                                                            to={`/catalog/${subLink.name
+                                                                                .split(" ")
+                                                                                .join("-")
+                                                                                .toLowerCase()}`}
+                                                                            className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                                                                            key={index}>
+                                                                            <p>
+                                                                                {subLink.name}
+                                                                            </p>
+                                                                        </Link>
+                                                                    ))
+                                                                )
+
+                                                            )
                                                     }
+
 
                                                 </div>
                                             </div>
@@ -160,6 +168,6 @@ export const Navbar = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
