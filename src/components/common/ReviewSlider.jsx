@@ -33,7 +33,7 @@ function ReviewSlider() {
             }
             setLoading(false);
         }
-        //fetchAllReviews();
+        fetchAllReviews();
     }, [])
 
     // console.log(reviews)
