@@ -1,30 +1,15 @@
-# React & Tailwind CSS Starter Pack
+# Screenshot 
+## Student Dashboard
+![Untitled design](https://github.com/Dhruv2024/StudyNotion/assets/126909646/cb1e4fd6-8fe3-4c03-80d4-198950848040)
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+![WhatsApp Image 2024-06-02 at 18 41 32_1cded960](https://github.com/Dhruv2024/StudyNotion/assets/126909646/2213b31d-ad2d-4c02-8c3a-31bcbde2a7a0)
 
-## Usage
+## Instructor Dashboard
+![WhatsApp Image 2024-06-02 at 18 40 21_6689eec3](https://github.com/Dhruv2024/StudyNotion/assets/126909646/fde04b18-b8f9-473d-bb9c-77477e057fb9)
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+![image](https://github.com/Dhruv2024/StudyNotion/assets/126909646/0f0c9236-bcfd-4741-b1e3-88067b2fdf46)
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/Dhruv2024/StudyNotion.git
-    ```
-
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
-
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
-
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+![image](https://github.com/Dhruv2024/StudyNotion/assets/126909646/2cda1d12-f187-4669-8b27-8b8644282ff4)
 
 ## Contributing
 
