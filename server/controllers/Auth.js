@@ -3,8 +3,8 @@ const User = require("../models/User");
 const OTP = require("../models/OTP");
 const jwt = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
+const { passwordUpdate } = require("../mail/templates/passwordUpdate");
 const mailSender = require("../utils/mailSender");
-const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 const Profile = require("../models/Profile");
 require("dotenv").config();
 
@@ -231,9 +231,8 @@ exports.changePassword = async (req, res) => {
 		// Get user data from req.user
 		const userDetails = await User.findById(req.user.id);
 
-		// Get old password, new password, and confirm new password from req.body
-		const { oldPassword, newPassword, confirmNewPassword } = req.body;
-
+		// Get old password, new password from req.body
+		const { oldPassword, newPassword } = req.body;
 		// Validate old password
 		const isPasswordMatch = await bcrypt.compare(
 			oldPassword,
@@ -246,15 +245,6 @@ exports.changePassword = async (req, res) => {
 				.json({ success: false, message: "The password is incorrect" });
 		}
 
-		// Match new password and confirm new password
-		if (newPassword !== confirmNewPassword) {
-			// If new password and confirm new password do not match, return a 400 (Bad Request) error
-			return res.status(400).json({
-				success: false,
-				message: "The password and confirm password does not match",
-			});
-		}
-
 		// Update password
 		const encryptedPassword = await bcrypt.hash(newPassword, 10);
 		const updatedUserDetails = await User.findByIdAndUpdate(
@@ -262,14 +252,16 @@ exports.changePassword = async (req, res) => {
 			{ password: encryptedPassword },
 			{ new: true }
 		);
-
+		console.log("UPDATED USER IS :");
+		console.log(updatedUserDetails);
 		// Send notification email
 		try {
 			const emailResponse = await mailSender(
 				updatedUserDetails.email,
-				passwordUpdated(
+				`Password changed succesfully`,
+				passwordUpdate(
 					updatedUserDetails.email,
-					`Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
+					updatedUserDetails.firstName
 				)
 			);
 			console.log("Email sent successfully:", emailResponse.response);
